@@ -6,6 +6,7 @@ car = path('car.gif')
 tiles = list(range(32)) * 2
 state = {'mark': None}
 hide = [True] * 64
+square_count = 0
 
 def square(x, y):
     "Draw white square with black outline at (x, y)."
@@ -50,6 +51,7 @@ def draw():
         if hide[count]:
             x, y = xy(count)
             square(x, y)
+            square_count += 1
 
     mark = state['mark']
 
