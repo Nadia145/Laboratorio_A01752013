@@ -13,12 +13,11 @@ Contar y desplegar el numero de taps
 Detectar cuando todos los cuadros se han destapado
 
 Yo 
-Actividad 1
-El otro compañero añadirá:
-Completar el rectángulo
-Completar el triángulo
-Actividad 2
-La comida podrá moverse al azar un paso a la vez y no deberá de salirse de la ventana
+- Actividad 1
+    Completar el rectángulo
+    Completar el triángulo
+- Actividad 2
+    La comida podrá moverse al azar un paso a la vez y no deberá de salirse de la ventana
 Actividad 3
 Cambiar el tablero
 Hacer que los fantasmas vayan mas rápido
@@ -28,3 +27,4 @@ Actividad 5
 Central el dígito en el cuadro
 Como un condimento de innovación al juego, Podrías utilizar algo diferente a los dígitos para resolver el juego y que al usuario le ayude a tener mejor memoria ?
 
+Para utilizar pydoc
