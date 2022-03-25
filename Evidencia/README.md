@@ -1,4 +1,4 @@
-Tu 
+Luis 
 - Actividad 1
     Un color nuevo
     Dibujar un círculo
@@ -12,7 +12,7 @@ Tu
     Contar y desplegar el numero de taps
     Detectar cuando todos los cuadros se han destapado
 
-Yo 
+Nadia 
 - Actividad 1
     Completar el rectángulo
     Completar el triángulo
