@@ -1,9 +1,16 @@
 from random import *
+from tkinter import CENTER, LEFT, RIGHT
 from turtle import *
+from xml.etree.ElementTree import tostring
 from freegames import path
 
 car = path('car.gif')
-tiles = list(range(32)) * 2
+list_em = [u'\ud83d\udd00',u'\ud83d\udd01',u'\ud83d\udd02',u'\ud83d\udd03',u'\ud83d\udd04',u'\ud83d\udd05',u'\ud83d\udd06',u'\ud83d\udd07',u'\ud83d\udd08'
+           ,u'\ud83d\udd09',u'\ud83d\udd10',u'\ud83d\udd11',u'\ud83d\udd12',u'\ud83d\udd13',u'\ud83d\udd14',u'\ud83d\udd15',u'\ud83d\udd16',u'\ud83d\udd17'
+           ,u'\ud83d\udd18',u'\ud83d\udd19',u'\ud83d\udd20',u'\ud83d\udd21',u'\ud83d\udd22',u'\ud83d\udd23',u'\ud83d\udd24',u'\ud83d\udd25',u'\ud83d\udd26'
+           ,u'\ud83d\udd27',u'\ud83d\udd28',u'\ud83d\udd29',u'\ud83d\udd30',u'\ud83d\udd31']
+
+tiles = list(list_em) * 2
 state = {'mark': None}
 hide = [True] * 64
 
@@ -56,9 +63,18 @@ def draw():
     if mark is not None and hide[mark]:
         x, y = xy(mark)
         up()
-        goto(x + 2, y)
+        goto(x + 5, y + 5)
         color('black')
-        write(tiles[mark], font=('Arial', 30, 'normal'))
+        write(tiles[mark], font=('Arial', 30, 'normal'))  
+        #if tiles[mark] < 10:
+            #goto(x + 15, y)
+            #color('black')
+            #write(tiles[mark], font=('Arial', 30, 'normal'))  
+        #else:    
+            #goto(x + 4, y)
+            #color('black')
+            #write(tiles[mark], font=('Arial', 30, 'normal'))  
+            
 
     update()
     ontimer(draw, 100)
