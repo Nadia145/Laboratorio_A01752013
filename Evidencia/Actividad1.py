@@ -1,5 +1,6 @@
 from turtle import *
 from freegames import vector
+import turtle as ts
 
 def line(start, end):
     "Draw line from start to end."
@@ -27,11 +28,8 @@ def circle(start, end):
     goto(start.x, start.y)
     down()
     begin_fill()
-
-    for count in range(200):
-        forward(end.x - start.x)
-        left(2)
-
+    # use turtle function circle() to draw a circle
+    ts.circle(abs(end-start)) #circle radius size of difference end-start
     end_fill()
 
 def rectangle(start, end):
@@ -95,7 +93,7 @@ onkey(lambda: color('white'), 'W')
 onkey(lambda: color('green'), 'G')
 onkey(lambda: color('blue'), 'B')
 onkey(lambda: color('red'), 'R')
-onkey(lambda: color('pink'), 'P')
+onkey(lambda: color('pink'), 'P')#Add color pink
 onkey(lambda: store('shape', line), 'l')
 onkey(lambda: store('shape', square), 's')
 onkey(lambda: store('shape', circle), 'c')
