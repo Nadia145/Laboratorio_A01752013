@@ -55,9 +55,10 @@ def move():
 
     draw()
 
+    #When the target touch the limit of the map it is repositionated to de begining 
     for target in targets:
         if not inside(target):
-            return
+            target.x = 200
 
     ontimer(move, 50)
 

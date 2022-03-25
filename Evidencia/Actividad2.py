@@ -32,7 +32,7 @@ def move():
         return
 
     snake.append(head)
-
+    #The food will appear randomnly in a short range
     if head == food:
         print('Snake:', len(snake))
         food.x = randrange(-1, 1) * 10

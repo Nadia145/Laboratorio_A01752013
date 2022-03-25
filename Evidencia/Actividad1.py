@@ -39,33 +39,29 @@ def rectangle(start, end):
     down()
     begin_fill()
 
-    forward(end.x - start.x)
-    left(90)
+    for count in range(2):
+        forward(end.x - start.x)
+        left(90)
     
-    forward(end.x + start.x)
-    left(90)
-    
-    forward(end.x - start.x)
-    left(90)
-    
-    forward(end.x + start.x)
-    left(90)
-
+        forward(end.x + start.x)
+        left(90)
 
     end_fill()
 
 def triangle(start, end):
     "Draw triangle from start to end."
+    #It is defined the point where the triangle starts
     up()
     goto(start.x, start.y)
     down()
     begin_fill()
 
+    #The triangle is made by three lines which have an angle of 120
     for count in range(3):
         forward(end.x - start.x)
         left(120)
 
-    end_fill()
+    end_fill() 
 
 def tap(x, y):
     "Store starting point or draw shape."
