@@ -3,11 +3,11 @@ from turtle import *
 from freegames import path
 
 car = path('car.gif')
-tiles = list(range(32)) * 2
+tiles = list(["U0001F600"]) * 2
 state = {'mark': None}
 hide = [True] * 64
-tap_count = 0
-square_count = 0
+tap_count = 0 #variable for storing number of taps
+square_count = 0 #variable for checking discovered squares
 
 def square(x, y):
     "Draw white square with black outline at (x, y)."
@@ -37,16 +37,18 @@ def tap(x, y):
     global tap_count
     if mark is None or mark == spot or tiles[mark] != tiles[spot]:
         state['mark'] = spot
-        tap_count += 1
+        #add 1 to tap count when tap interaction and print it
+        tap_count += 1 
         print("Tap count :", tap_count)
 
     else:
         hide[spot] = False
         hide[mark] = False
         state['mark'] = None
-        square_count += 1
+        #add 2 to count when 2 squares are revealed
+        square_count += 2
 
-    if square_count == 32:
+    if square_count == 64:#If square count is 32 all squares have been discoverd
         print("Todos los cuadros estan destapados!!")
 
 

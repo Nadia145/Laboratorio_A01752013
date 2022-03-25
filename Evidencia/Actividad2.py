@@ -5,10 +5,12 @@ from freegames import square, vector
 food = vector(0, 0)
 snake = [vector(10, 0)]
 aim = vector(0, -10)
-list_colors = ["black", "green", "yellow", "blue", "pink"]
-color_snake = str(list_colors[randrange(0,4)])
-list_colors.remove(color_snake)
-color_food = str(list_colors[randrange(0,4)])
+#List of color for food and snake
+list_colors = ["black", "green", "yellow", "blue", "pink"]#lista sin color rojo
+#Asign color randomly at the start of the game
+color_snake = str(list_colors[randrange(0,4)])#Select snake color
+list_colors.remove(color_snake)#Remove color of snake from list
+color_food = str(list_colors[randrange(0,4)])#Select food color
 
 def change(x, y):
     "Change snake direction."
