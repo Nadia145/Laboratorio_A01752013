@@ -1,3 +1,7 @@
+'''Continuar con una aplicación que implica una inteligencia con un grado de dificultad
+ mayor conocida por la mayoría pero que requiere una actualización
+  para manejar una funcionalidad adicional.'''
+
 from random import choice
 from turtle import *
 from freegames import floor, vector
@@ -7,11 +11,12 @@ path = Turtle(visible=False)
 writer = Turtle(visible=False)
 aim = vector(5, 0)
 pacman = vector(-40, -80)
+#Position of ghosts and directions
 ghosts = [
-   [vector(-180, 160), vector(5, 0)],
-   [vector(-180, -160), vector(0, 5)],
-   [vector(100, 160), vector(0, -5)],
-   [vector(100, -160), vector(-5, 0)],
+   [vector(-180, 160), vector(10, 0)],
+   [vector(-180, -160), vector(0, 10)],
+   [vector(100, 160), vector(0, -10)],
+   [vector(100, -160), vector(-10, 0)],
 ]
 #The tiles were changed
 tiles = [
@@ -83,7 +88,7 @@ def world():
            x = (index % 20) * 20 - 200
            y = 180 - (index // 20) * 20
            square(x, y)
-
+           # Drawing of points
            if tile == 1:
                path.up()
                path.goto(x + 10, y + 10)
@@ -110,43 +115,31 @@ def move():
 
    up()
    goto(pacman.x + 10, pacman.y + 10)
-   dot(20, 'yellow')
+   dot(20, 'yellow')#continue movement
    previous_plan = vector(0,0)
    plan = vector(0,0)
    for point, course in ghosts:
        if valid(point + course):
            point.move(course)
+
+        #The velocity of the ghosts was changed
        else:
            options = [
-               vector(5, 0),
-               vector(-5, 0),
-               vector(0, 5),
-               vector(0, -5),
+               vector(10, 0),
+               vector(-10, 0),
+               vector(0, 10),
+               vector(0, -10),
            ]
-           if previous_plan == plan:
+           if previous_plan == plan:  # verifies if we dont move in de same direction again
                plan = choice(options)
+           # change course of movement
            course.x = plan.x
            course.y = plan.y
            previous_plan = plan
 
-    up()
-    goto(pacman.x + 10, pacman.y + 10)
-    dot(20, 'yellow')
-
-    for point, course in ghosts:
-        if valid(point + course):
-            point.move(course)
-        else:
-            #The velocity of the ghosts was changed
-            options = [
-                vector(8, 0),
-                vector(-8, 0),
-                vector(0, 8),
-                vector(0, -8),
-            ]
-            plan = choice(options)
-            course.x = plan.x
-            course.y = plan.y
+       up()
+       goto(point.x + 10, point.y + 10)
+       dot(20, 'red')#draw ghost
 
    update()
 
@@ -154,21 +147,22 @@ def move():
        if abs(pacman - point) < 5:
            return
 
+   # Make ghosts more intelligent
    for point, course in ghosts:
+       # If difference between pacman and ghost is less than 45 we change direction of ghosts to chace pacman
        if abs(pacman - point) < 45:
-           if point.x > pacman.x:
-               if valid(vector(point.x-5,point.y)):
-                   course.x = -5
+           if point.x > pacman.x:  # If the x position of ghosts is more than pacman's we move -x
+               if valid(vector(point.x - 5, point.y)):  # verifies if the movement is viable in -x
+                   course.x = -5  # Change course
            elif point.x < pacman.x:
-               if valid(vector(point.x+5,point.y)):
+               if valid(vector(point.x + 5, point.y)):  # verifies if the movement is viable in +x
                    course.x = 5
-           elif point.y > pacman.y:
-               if valid(vector(point.x,point.y-5)):
+           elif point.y > pacman.y:  # If the x position of ghosts is more than pacman's we move -y
+               if valid(vector(point.x, point.y - 5)):  # verifies if the movement is viable in -y
                    course.y = -5
            elif point.y < pacman.y:
-               if valid(vector(point.x,point.y+5)):
+               if valid(vector(point.x, point.y + 5)):  # verifies if the movement is viable in +y
                    course.y = 5
-
 
    ontimer(move, 100)
 

@@ -1,3 +1,6 @@
+'''Continuar con una aplicación que implica una inteligencia muy sencilla conocida por la 
+mayoría pero que requiere una actualización para manejar una funcionalidad adicional.'''
+
 from turtle import *
 from random import randrange
 from freegames import square, vector
@@ -25,7 +28,7 @@ def move():
     "Move snake forward one segment."
     head = snake[-1].copy()
     head.move(aim)
-
+    #If snake head inside sneak end the game
     if not inside(head) or head in snake:
         square(head.x, head.y, 9, 'red')
         update()
@@ -33,7 +36,7 @@ def move():
 
     snake.append(head)
     #The food will appear randomnly in a short range
-    if head == food:
+    if head == food:#If snake eat food extend snake
         print('Snake:', len(snake))
         food.x = randrange(-1, 1) * 10
         food.y = randrange(-1, 1) * 10
@@ -43,9 +46,9 @@ def move():
     clear()
 
     for body in snake:
-
+        #create body of snake
         square(body.x, body.y, 9, color_snake)
-
+    #create food of snake
     square(food.x, food.y, 9, color_food)
     update()
     ontimer(move, 100)

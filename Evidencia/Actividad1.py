@@ -1,3 +1,6 @@
+'''Iniciar con una aplicación sencilla que presenta una manera fácil de dibujar 
+elementos definidos por el usuario en la pantalla.'''
+
 from turtle import *
 from freegames import vector
 import turtle as ts
